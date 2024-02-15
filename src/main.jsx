@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import Day2 from "./day2/index";
+import Day3 from "./day3";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Day2 />
+    <Day3 />
   </React.StrictMode>
 );
