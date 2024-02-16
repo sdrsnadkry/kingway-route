@@ -1,13 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { applyMiddleware, configureStore } from "@reduxjs/toolkit";
+import { thunk } from "redux-thunk";
 
-import productReducer from './slice/productSlice'
-import counterReducer from './slice/counterSlice'
+import counterReducer from "./slice/counterSlice";
+import productReducer from "./slice/productSlice";
 
 export default configureStore({
     reducer: {
         userReducer: {},
-        // productReducer,
         productReducer: productReducer,
         counterReducer: counterReducer,
     },
+    middleware: () => [thunk],
 });

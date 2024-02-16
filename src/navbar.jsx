@@ -8,12 +8,11 @@ const NavItems = ({ isActive, ...props }) => {
 const Navbar = () => {
   return (
     <div>
-      <NavLink to="/dashboard/team">
-        {(navProps) => <NavItems {...navProps} title="Team" />}
+      <NavLink to="/home">
+        {(navProps) => <NavItems {...navProps} title="Home" />}
       </NavLink>
-      <NavLink to="/dashboard/contact">
-        {(navProps) => <NavItems {...navProps} title="Contact" />}
-        <NavItems title="Home" />
+      <NavLink to="/products" className={"mx-4"}>
+        {(navProps) => <NavItems {...navProps} title="Products" />}
       </NavLink>
     </div>
   );
