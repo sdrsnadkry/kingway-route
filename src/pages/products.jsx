@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../navbar";
+import React from "react";
 import Product from "../components/product";
-import axios from "axios";
+import useProducts from "../customHooks/useProducts";
+import Navbar from "../navbar";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
-
-  const fetchProductsFromAPi = async () => {
-    try {
-      const response = await axios.get("https://fakestoreapi.com/products");
-      setProducts(response.data);
-    } catch (error) {
-      setProducts([]);
-    }
-  };
-
-  useEffect(() => {
-    fetchProductsFromAPi();
-  }, []);
-
-  console.log(products);
+  // DRY Principle
+  const { products } = useProducts();
 
   return (
     <div>
