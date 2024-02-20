@@ -7,9 +7,7 @@ const Day5 = () => {
 
   const fetchDataFromApi = async () => {
     try {
-      const response = await axios.get(
-        "https://fakestoreapi.com/products"
-      );
+      const response = await axios.get("https://fakestoreapi.com/products");
       setTodos(response?.data);
     } catch (error) {}
   };
@@ -23,7 +21,7 @@ const Day5 = () => {
       Products List
       {todos?.map((item, index) => (
         <div key={item?.id}>
-            <img src={item?.image} alt="" srcset="" width={150} height={150} />
+          <img src={item?.image} alt="" srcset="" width={150} height={150} />
           <p>
             {index + 1} - {item?.title}
           </p>
