@@ -13,9 +13,7 @@ function useProducts() {
             const response = await axios.get("https://fakestoreapi.com/products");
 
             dispatch(setProductsToStore(response.data));
-        } catch (error) {
-            // dispatch(setProductsToStore(null));
-        }
+        } catch (error) {}
     };
 
     useEffect(() => {
