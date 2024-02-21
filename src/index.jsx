@@ -1,38 +1,19 @@
-import { Route, Routes } from "react-router-dom";
-import Home from "./home";
-import Navbar from "./navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./routes/home";
+import About from "./routes/about";
+import Contact from "./routes/contact";
+import Header from "./components/header";
 
-function App() {
+export default function App() {
   return (
-    <Routes>
-      <Route
-        path="/app"
-        element={
-          <div>
-            <h1>App</h1>
-          </div>
-        }
-      />
-      <Route path="/home" element={<Home />} />
-      <Route
-        path="/about"
-        element={
-          <div>
-            <h1>About</h1>
-          </div>
-        }
-      />
-      <Route
-        path="*"
-        element={
-          <div>
-            <h1>404</h1>
-            <h1>Page not found</h1>
-          </div>
-        }
-      />
-    </Routes>
+    <BrowserRouter>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
