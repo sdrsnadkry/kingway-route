@@ -21,7 +21,7 @@ ChartJS.register(
   Legend
 );
 const BarChart = () => {
-  const responseFromRedux = apiData; //useSelector
+  const responseFromRedux = apiData; //useSelector`
 
   const [chartData, setChartData] = useState(null);
 
