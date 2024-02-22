@@ -1,3 +1,10 @@
 .active {
     color: red;
 }
+
+.containers {
+    max-width: 500px;
+    margin: 150px auto;
+    background-color: azure;
+    padding: 60px;
+}

@@ -5,12 +5,14 @@ import Products  from "./pages/products";
 import Qr from "./pages/qr";
 import Chart from "./pages/chart";
 import BarChart from "./pages/barChart";
+import Login from "./pages/login";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/home" element={<Home />} />
       <Route path="/share" element={<Qr />} />
       <Route path="/chart" element={<Chart />} />
