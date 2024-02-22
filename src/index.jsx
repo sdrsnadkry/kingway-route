@@ -3,6 +3,7 @@ import Home from "./routes/home";
 import About from "./routes/about";
 import Contact from "./routes/contact";
 import Header from "./components/header";
+import Login from "./routes/login";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

@@ -9,3 +9,10 @@
 .mr-5 {
     margin-right: 20px;
 }
+
+.wrapper {
+    max-width: 600px;
+    margin: 150px auto;
+    background-color: azure;
+    padding: 60px;
+}
