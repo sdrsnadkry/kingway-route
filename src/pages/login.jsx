@@ -4,20 +4,27 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { string, object } from "yup";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { loginAction } from "../redux/slice/authSlice";
 
 const initialValues = {
-  username: "",
+  email: "",
   password: "",
 };
 
 const validationSchema = object({
-  username: string()
-    // .email("Please enter a valid email")
-    .required("Please enter your username."),
+  email: string()
+    .email("Please enter a valid email")
+    .required("Please enter your email."),
   password: string().required("Please enter your password"),
 });
 
 const Login = () => {
+  const navigation = useNavigate();
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -29,18 +36,29 @@ const Login = () => {
   const loginUser = async (formValue) => {
     try {
       const apiRequest = await axios.post(
-        "https://dummyjson.com/auth/login",
+        "https://node-app-by2r.onrender.com/auth/login",
         formValue
       );
 
-      console.log(apiRequest?.data);
+      if (apiRequest?.data?.token) {
+        toast.success(apiRequest?.data?.message);
+
+        //login to store token on local storage
+
+        localStorage.setItem("token", apiRequest?.data?.token);
+
+        dispatch(loginAction(true));
+
+        navigation("/home", { replace: true });
+      } else {
+        toast.error(apiRequest?.data?.message);
+      }
     } catch (error) {
+      console.log(error);
       if (error?.response?.data?.message) {
         toast.error(error?.response?.data?.message);
       }
     }
-
-    // Here you can call your API to login the user
   };
 
   return (
@@ -48,15 +66,15 @@ const Login = () => {
       <form onSubmit={formik.handleSubmit}>
         {/* <!-- Email input --> */}
         <div className="form-outline mb-4">
-          <label className="form-label" htmlFor="userNameInput">
+          <label className="form-label" htmlFor="emailInput">
             Email address
           </label>
           <input
             type="text"
-            id="userNameInput"
+            id="emailInput"
             className="form-control"
-            name="username"
-            value={formik.values.username}
+            name="email"
+            value={formik.values.email}
             onChange={formik.handleChange}
           />
           {formik?.errors?.email && (
