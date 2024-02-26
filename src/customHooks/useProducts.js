@@ -10,7 +10,14 @@ function useProducts() {
 
     const fetchProductsFromAPi = async() => {
         try {
-            const response = await axios.get("https://fakestoreapi.com/products");
+            const token = localStorage.getItem("token");
+            const response = await axios.get("https://fakestoreapi.com/products", {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer  ${token}`,
+                },
+                method: "POST" // "PUT"
+            });
 
             dispatch(setProductsToStore(response.data));
         } catch (error) {}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import axios from "axios";
 import { useFormik } from "formik";
@@ -25,6 +25,8 @@ const Login = () => {
   const navigation = useNavigate();
   const dispatch = useDispatch();
 
+  const [loading, setLoading] = useState(false);
+
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -35,6 +37,7 @@ const Login = () => {
 
   const loginUser = async (formValue) => {
     try {
+      setLoading(true);
       const apiRequest = await axios.post(
         "https://node-app-by2r.onrender.com/auth/login",
         formValue
@@ -53,11 +56,13 @@ const Login = () => {
       } else {
         toast.error(apiRequest?.data?.message);
       }
+      setLoading(false);
     } catch (error) {
       console.log(error);
       if (error?.response?.data?.message) {
         toast.error(error?.response?.data?.message);
       }
+      setLoading(false);
     }
   };
 
@@ -102,7 +107,7 @@ const Login = () => {
 
         {/* <!-- Submit button --> */}
         <button type="submit" className="btn btn-primary btn-block mb-4 px-5">
-          Sign in
+          {loading ? "loading..." : "Sign in"}
         </button>
 
         {/* <!-- Register buttons --> */}

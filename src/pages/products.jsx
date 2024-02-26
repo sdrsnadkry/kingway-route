@@ -8,24 +8,27 @@ const Products = () => {
   const { products } = useProducts();
 
   return (
-    <div>
-      <Navbar />
+    <>
+      <div>
+        <></>
+        <Navbar />
 
-      <div className="container text-center mt-5">
-        <div className="row row-cols-4">
-          {products?.map((item) => (
-            <div className="col" key={item?.id}>
-              <Product
-                title={item?.title}
-                price={item?.price}
-                image={item?.image}
-                description={item?.description}
-              />
-            </div>
-          ))}
+        <div className="container text-center mt-5">
+          <div className="row row-cols-4">
+            {products?.map((item) => (
+              <div className="col" key={item?.id}>
+                <Product
+                  title={item?.title}
+                  price={item?.price}
+                  image={item?.image}
+                  description={item?.description}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
