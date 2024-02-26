@@ -2,6 +2,7 @@ import React from "react";
 
 import { useFormik } from "formik";
 import { object, string } from "yup";
+import Switch from "../../switch";
 
 const validationSchema = object({
   email: string()
@@ -28,6 +29,7 @@ const Login = () => {
 
   return (
     <div className="wrapper">
+      <Switch/>
       <form onSubmit={formik.handleSubmit}>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>
@@ -69,6 +71,7 @@ const Login = () => {
           </button>
         </div>
       </form>
+      
     </div>
   );
 };
